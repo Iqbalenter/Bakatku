@@ -11,8 +11,8 @@ body {
   text-align: center !important;
 }
 
-.login-container {
-  background-image: url("../assets//LoginBackground.png");
+.register-container {
+  background-image: url("../assets/LoginBackground.png");
 }
 
 .back-button {
@@ -34,17 +34,17 @@ body {
   width: 40%;
 }
 
-.login-title {
+.register-title {
   margin-top: 50px;
   margin-bottom: 60px;
 }
 
-.login-title h3 {
+.register-title h3 {
   color: #FFFFFF;
   font-weight: 600;
 }
 
-.login-form {
+.register-form {
   border: 1px solid #000000;
   background-color: #F9F9F9;
   border-radius: 20px;
@@ -80,11 +80,11 @@ body {
   margin: 0 15px;
 }
 
-.login-button-container {
+.register-button-container {
   margin: 30px 20px;
 }
 
-.login-button-container button {
+.register-button-container button {
   background-color: #132A4D;
   border: 1px solid #F9F9F9;
   color: #FFFF;

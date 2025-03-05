@@ -34,6 +34,11 @@
     margin: 0 10px;
 }
 
+.Navbar .login {
+    text-decoration: none;
+    color: #C3C3C3;
+}
+
 .Navbar li p span {
     margin-right: 5px;
 }

@@ -1,15 +1,17 @@
 import Logos from "../../assets/Logos.png"
 import "../../css/footer.css"
+import { Heading3, Heading4 } from "../Elements/Heading/Index";
+import Image from "../Elements/Image/Index";
 
 const Footer = () => {
     return (
         <div className="Footer">
             <div className="footer-header">
-                <img src={Logos}/>
-                <h4>BakatkuAI</h4>
+                <Image src={Logos}/>
+                <Heading4>BakatkuAI</Heading4>
             </div>
 
-            <h3>Cari potensi anda</h3>
+            <Heading3>Cari potensi anda</Heading3>
         </div>
     )
 }

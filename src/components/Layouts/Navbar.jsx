@@ -5,6 +5,10 @@ import LoginLogo from "../../assets/login.png";
 import DashboardLogo from "../../assets/dashboard.png";
 import SkillLogo from "../../assets/skill.png";
 import UserLogo from "../../assets/user.png";
+
+import { NavLink } from "react-router";
+import Image from "../Elements/Image/Index";
+
 import "../../css/navbar.css";
 const Navbar = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -13,19 +17,19 @@ const Navbar = () => {
         <div className="Navbar">
             {!isLoggedIn ? (
                 <ul>
-                    <li><img src={HomeLogo}/></li>
-                    <li><img width={35} src={Scan}/></li>
+                    <li><NavLink to="/"><img src={HomeLogo}/></NavLink></li>
+                    <li><Image width={35} src={Scan}/></li>
                     <li>
-                        <p><span><img src={LoginLogo}/></span>Login</p>
+                        <NavLink to="/login" className="login"><p><span><img src={LoginLogo}/></span>Login</p></NavLink>
                     </li>
                 </ul>
             ) : (
                 <ul>
-                    <li><img src={HomeLogo} alt="Home" /></li>
-                    <li><img src={DashboardLogo} alt="Dashboard" /></li>
-                    <li><img width={35} src={Scan} alt="Scan" /></li>
-                    <li><img src={SkillLogo} alt="Skill" /></li>
-                    <li><img src={UserLogo} alt="User" /></li>
+                    <li><Image src={HomeLogo} alt="Home" /></li>
+                    <li><Image src={DashboardLogo} alt="Dashboard" /></li>
+                    <li><Image width={35} src={Scan} alt="Scan" /></li>
+                    <li><Image src={SkillLogo} alt="Skill" /></li>
+                    <li><Image src={UserLogo} alt="User" /></li>
                 </ul>
             )}
         </div>

@@ -1,32 +1,35 @@
 import ResumeIcon from "../../../assets/Resume.png"
 import AiIcon from "../../../assets/AIFile.png"
+import { Heading3 } from "../../Elements/Heading/Index";
+import Paragraph from "../../Elements/Paragraph/Index";
+import Image from "../../Elements/Image/Index";
 
 const Card = () => {
     return (
         <div className="Card">
             <div className="title">
-                <h3>Hanya 2 langkah saja</h3>
+                <Heading3>Hanya 2 langkah saja</Heading3>
             </div>
 
             <div className="cards">
                 <div className="card-1">
                     <div className="card-icon">
-                        <img src={ResumeIcon}/>
+                        <Image src={ResumeIcon}/>
                     </div>
                     <div className="card-description">
-                        <p>
+                        <Paragraph>
                         Scan CV ini dapat mempersonalisasi keterampilan Anda dengan cepat dan efisien.
-                        </p>
+                        </Paragraph>
                     </div>
                 </div>
                 <div className="card-2">
                     <div className="card-icon">
-                        <img src={AiIcon}/>
+                        <Image src={AiIcon}/>
                     </div>
                     <div className="card-description">
-                        <p>
+                        <Paragraph>
                         Dapatkan hasil dari analisa AI Mengenai skill kamu
-                        </p>
+                        </Paragraph>
                     </div>
                 </div>
             </div>

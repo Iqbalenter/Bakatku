@@ -3,12 +3,13 @@ import PasswordLogo from "../../../assets/mdi_password.png";
 import VerticalIcon from "../../../assets/vertical-line.png";
 import ShowIcon from "../../../assets/show.png";
 import HiddenIcon from "../../../assets/hidden.png";
+import PersonIcon from "../../../assets/wpf_name.png"
 
 import { useState } from "react";
 import { Heading3 } from "../../Elements/Heading/Index";
 import Image from "../../Elements/Image/Index";
 import Span from "../../Elements/Span/Index";
-const FormLogin = () => {
+const FormRegister = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -16,14 +17,20 @@ const FormLogin = () => {
     };
     
     return (
-        <div className="login-form-container">
-            <div className="login-title">
-                <Heading3>Login</Heading3>
+        <div className="register-form-container">
+            <div className="register-title">
+                <Heading3>Register</Heading3>
             </div>
 
-            <div className="login-form">
+            <div className="register-form">
                 <form>
                 <div className="form-container">
+                    <div className="input-box">
+                        <span className="icon"><Image src={PersonIcon}/></span>
+                        <span className="icon-v"><Image src={VerticalIcon}/></span>
+                        <input type="text" placeholder="Nama"/>
+                    </div>
+
                     <div className="input-box">
                         <span className="icon"><Image src={MailLogo}/></span>
                         <span className="icon-v"><Image src={VerticalIcon}/></span>
@@ -42,11 +49,11 @@ const FormLogin = () => {
                 </form>
             </div>
 
-            <div className="login-button-container">
-                <button className="login-button">Selanjutnya</button>
+            <div className="register-button-container">
+                <button className="register-button">Selanjutnya</button>
             </div>
         </div>
     )
 }
 
-export default FormLogin;
+export default FormRegister;
