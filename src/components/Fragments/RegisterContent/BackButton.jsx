@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 const BackButton = () => {
     return (
         <div className="back-button">
-            <NavLink to="/" className="back"><img src={BackIcon}/></NavLink>
+            <NavLink to="/login" className="back"><img src={BackIcon}/></NavLink>
         </div>
     )
 }

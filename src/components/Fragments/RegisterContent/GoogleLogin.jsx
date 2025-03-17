@@ -1,6 +1,8 @@
 import GoogleLogo from "../../../assets/devicon_google.png";
 import MailIcon from "../../../assets/iconamoon_email-thin.png"
 
+import { NavLink } from "react-router";
+
 const GoogleLogin = () => {
     return (
         <div>
@@ -13,7 +15,6 @@ const GoogleLogin = () => {
 
             <div className="google-button-container">
                 <button className="google"><img src={GoogleLogo} width={25}/>With Google</button>
-                <button className="email"><img src={MailIcon} width={25}/>With Email</button>
             </div>
         </div>
     )

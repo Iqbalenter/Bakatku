@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Login from './pages/Login';
 import Register from './pages/Register';
 import VerificationEmail from './pages/Verification';
+import FillIdentity from './pages/FillIdentity';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/verification',
     element: <VerificationEmail/>
+  },
+  {
+    path: 'fill-identity',
+    element: <FillIdentity/>
   },
 ])
 

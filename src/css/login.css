@@ -139,6 +139,18 @@ body {
   color: #545454;
 }
 
+.google-button-container a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 24px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  font-weight: 600;
+  color: #545454;
+}
 .google-button-container .google {
   margin-bottom: 20px;
 }
