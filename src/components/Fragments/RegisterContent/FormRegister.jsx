@@ -8,7 +8,6 @@ import PersonIcon from "../../../assets/wpf_name.png"
 import { useState } from "react";
 import { Heading3 } from "../../Elements/Heading/Index";
 import Image from "../../Elements/Image/Index";
-import Span from "../../Elements/Span/Index";
 const FormRegister = () => {
     const [showPassword, setShowPassword] = useState(false);
 
@@ -26,7 +25,7 @@ const FormRegister = () => {
                 <form>
                 <div className="form-container">
                     <div className="input-box">
-                        <span className="icon"><Image src={PersonIcon}/></span>
+                        <span className="icon"><Image width={20} src={PersonIcon}/></span>
                         <span className="icon-v"><Image src={VerticalIcon}/></span>
                         <input type="text" placeholder="Nama"/>
                     </div>

@@ -9,6 +9,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import VerificationEmail from './pages/Verification';
 import FillIdentity from './pages/FillIdentity';
+import UploadCv from './pages/UploadCv';
+import ResultAnalysis from './pages/ResultAnalysis';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: 'fill-identity',
     element: <FillIdentity/>
+  },
+  {
+    path: 'send-cv',
+    element: <UploadCv/>
+  },
+  {
+    path: 'result-analysis',
+    element: <ResultAnalysis/>
   },
 ])
 

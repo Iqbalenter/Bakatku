@@ -22,13 +22,15 @@ body {
 }
 
 .form-identity {
-  background-color: #898989;
+  background-color: #bcbbbb57;
+  border: 1px solid #FFFFFF40;
   margin: 0 20px;
   padding: 20px 30px;
   border-radius: 20px;
+  margin-bottom: 60px;
 }
 
 label {
-  text-align: start;
   color: #FFFFFF;
+  font-size: 0.9rem;
 }
