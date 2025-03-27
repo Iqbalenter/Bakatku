@@ -1,6 +1,6 @@
 
 const skills = [
-    { name: "UI Design", level: 100 },
+    { name: "UI Design", level: 50 },
     { name: "Backend Development", level: 85 },
     { name: "UX Designer", level: 60 },
     { name: "Front end Development", level: 75 },

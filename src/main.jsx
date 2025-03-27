@@ -11,6 +11,9 @@ import VerificationEmail from './pages/Verification';
 import FillIdentity from './pages/FillIdentity';
 import UploadCv from './pages/UploadCv';
 import ResultAnalysis from './pages/ResultAnalysis';
+import ResultAnalysis2 from './pages/ResultAnalysis2';
+import Dashboard from './pages/Dashboard';
+import DashboardProgress from './pages/Dashboard-progress';
 
 const router = createBrowserRouter([
   {
@@ -30,16 +33,28 @@ const router = createBrowserRouter([
     element: <VerificationEmail/>
   },
   {
-    path: 'fill-identity',
+    path: '/fill-identity',
     element: <FillIdentity/>
   },
   {
-    path: 'send-cv',
+    path: '/send-cv',
     element: <UploadCv/>
   },
   {
-    path: 'result-analysis',
+    path: '/result-analysis',
     element: <ResultAnalysis/>
+  },
+  {
+    path: '/result-analysis2',
+    element: <ResultAnalysis2/>
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard/>
+  },
+  {
+    path: 'dashboard-progress',
+    element: <DashboardProgress/>
   },
 ])
 
