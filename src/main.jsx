@@ -14,6 +14,8 @@ import ResultAnalysis from './pages/ResultAnalysis';
 import ResultAnalysis2 from './pages/ResultAnalysis2';
 import Dashboard from './pages/Dashboard';
 import DashboardProgress from './pages/Dashboard-progress';
+import HistorySkill from './pages/HistorySkill';
+import HistorySkillDetail from './pages/HistorySkillDetail';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
   {
     path: 'dashboard-progress',
     element: <DashboardProgress/>
+  },
+  {
+    path: 'history-skill',
+    element: <HistorySkill/>
+  },
+  {
+    path: 'history-skill-detail',
+    element: <HistorySkillDetail/>
   },
 ])
 
