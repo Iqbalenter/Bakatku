@@ -34,6 +34,12 @@ body {
   width: 40%;
 }
 
+.back-button h3 {
+  color: #FFFFFF;
+  margin: 10px 75px;
+  font-weight: 600;
+}
+
 .login-title {
   margin-top: 50px;
   margin-bottom: 60px;
@@ -137,6 +143,7 @@ body {
   padding: 10px;
   font-weight: 600;
   color: #545454;
+  font-size: 1rem;
 }
 
 .google-button-container a {
@@ -151,6 +158,7 @@ body {
   font-weight: 600;
   color: #545454;
 }
+
 .google-button-container .google {
   margin-bottom: 20px;
 }

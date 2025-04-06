@@ -1,4 +1,4 @@
-import BackButton from "../components/Fragments/ResultAnalysisContent/BackButton";
+import BackButton from "../components/Elements/BackButton";
 import SkillProgress from "../components/Fragments/ResultAnalysisContent/SkillProgress";
 import Footer from "../components/Layouts/Footer";
 import Navbar from "../components/Layouts/Navbar";
@@ -8,7 +8,7 @@ import '../css/result-analysis.css';
 const ResultAnalysis = () => {
     return (
         <div className="result-analysis-container">
-            <BackButton/>
+            <BackButton to="/" titleStyle={{ color: "#ffff", margin: "10px 60px", fontWeight: "700" }}>Hasil analisis AI</BackButton>
             <SkillProgress/>
             <Navbar/>
             <Footer/>

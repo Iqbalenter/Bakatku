@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard';
 import DashboardProgress from './pages/Dashboard-progress';
 import HistorySkill from './pages/HistorySkill';
 import HistorySkillDetail from './pages/HistorySkillDetail';
+import Profile from './pages/Profile';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
   {
     path: 'history-skill-detail',
     element: <HistorySkillDetail/>
+  },
+  {
+    path: 'profile',
+    element: <Profile/>
   },
 ])
 
