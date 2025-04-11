@@ -17,6 +17,8 @@ import DashboardProgress from './pages/Dashboard-progress';
 import HistorySkill from './pages/HistorySkill';
 import HistorySkillDetail from './pages/HistorySkillDetail';
 import Profile from './pages/Profile';
+import ForgotPassword from './pages/ForgotPassword';
+import Article from './pages/Article';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
     path: 'profile',
     element: <Profile/>
   },
+  {
+    path: 'forgot-password',
+    element: <ForgotPassword/>
+  },
+  {
+    path: 'article',
+    element: <Article/>
+  }
 ])
 
 
