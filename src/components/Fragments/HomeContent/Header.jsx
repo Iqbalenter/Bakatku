@@ -2,7 +2,7 @@ import BakatKuLogo from '../../../assets/BakatkuLogos.png'
 import { Heading1, Heading4 } from '../../Elements/Heading/Index';
 import Image from '../../Elements/Image/Index';
 import Paragraph from '../../Elements/Paragraph/Index';
-import { useNavigate } = 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
