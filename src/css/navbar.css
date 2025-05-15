@@ -39,6 +39,10 @@
     color: #C3C3C3;
 }
 
+.Navbar li p {
+    color: white;
+}
+
 .Navbar li p span {
     margin-right: 5px;
 }
