@@ -6,6 +6,7 @@ const Content = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [fields, setFields] = useState([]);
     const [originalFields, setOriginalFields] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -50,13 +51,15 @@ const Content = () => {
         const token = localStorage.getItem("token");
 
         if (isEditing) {
-            // Update title if changed
-            for (let i = 0; i < originalFields.length; i++) {
-                const oldTitle = originalFields[i];
-                const newTitle = fields[i];
+            setIsLoading(true);
 
-                if (oldTitle && newTitle && oldTitle !== newTitle) {
-                    try {
+            try {
+                // 1. Update judul jika berubah
+                for (let i = 0; i < originalFields.length; i++) {
+                    const oldTitle = originalFields[i];
+                    const newTitle = fields[i];
+
+                    if (oldTitle && newTitle && oldTitle !== newTitle) {
                         await axios.put(`${import.meta.env.VITE_API_URL}/progress/update-title`, {
                             oldTitle,
                             newTitle
@@ -66,19 +69,13 @@ const Content = () => {
                                 "Content-Type": "application/json"
                             }
                         });
-                        console.log(`Updated: ${oldTitle} ➝ ${newTitle}`);
-                    } catch (error) {
-                        console.error(`Failed to update ${oldTitle}:`, error);
-                        alert(`Failed to update progress "${oldTitle}"`);
                     }
                 }
-            }
 
-            // Add new fields
-            const newFieldsOnly = fields.slice(originalFields.length).filter(f => f.trim() !== "");
-            if (newFieldsOnly.length > 0) {
-                const progressPayload = newFieldsOnly.map(title => ({ title, status: false }));
-                try {
+                // 2. Tambah baru
+                const newFieldsOnly = fields.slice(originalFields.length).filter(f => f.trim() !== "");
+                if (newFieldsOnly.length > 0) {
+                    const progressPayload = newFieldsOnly.map(title => ({ title, status: false }));
                     await axios.post(`${import.meta.env.VITE_API_URL}/progress`, {
                         progress: progressPayload
                     }, {
@@ -87,17 +84,11 @@ const Content = () => {
                             "Content-Type": "application/json"
                         }
                     });
-                    console.log("Successfully added new fields:", progressPayload);
-                } catch (error) {
-                    console.error("Failed to add new fields:", error);
-                    alert("Failed to add new progress items");
                 }
-            }
 
-            // Delete removed fields
-            const deletedFields = originalFields.filter(original => !fields.includes(original));
-            for (const title of deletedFields) {
-                try {
+                // 3. Hapus yang dihapus
+                const deletedFields = originalFields.filter(original => !fields.includes(original));
+                for (const title of deletedFields) {
                     await axios.delete(`${import.meta.env.VITE_API_URL}/progress/delete-title`, {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -105,15 +96,16 @@ const Content = () => {
                         },
                         data: { title }
                     });
-                    console.log(`Deleted: ${title}`);
-                } catch (error) {
-                    console.error(`Failed to delete ${title}:`, error);
-                    alert(`Failed to delete progress "${title}"`);
                 }
-            }
 
-            alert("Update completed");
-            setOriginalFields([...fields]);
+                alert("Update completed");
+                setOriginalFields([...fields]);
+            } catch (error) {
+                console.error("Update error:", error);
+                alert("Failed to update progress data.");
+            } finally {
+                setIsLoading(false); // Selesai loading
+            }
         }
 
         setIsEditing(!isEditing);
@@ -121,6 +113,11 @@ const Content = () => {
 
     return (
         <div className="progress-trackers">
+            {isLoading && (
+                <div className="full-screen-loading">
+                    <div className="spinner"></div>
+                </div>
+            )}
             <h3>Progress Tracker</h3>
             <div className="progress-tracker">
                 <div className="tracker-container">
