@@ -1,7 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Result = () => {
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const location = useLocation();
     const { skill_choice, level, description } = location.state || {};
@@ -17,6 +18,8 @@ const Result = () => {
             navigate("/send-cv");
             return;
         }
+
+        setLoading(false);
     }, [navigate, skill_choice, level, description]);
 
     const getLevelText = (level) => {
@@ -29,6 +32,14 @@ const Result = () => {
 
     if (!skill_choice || level === undefined || !description) {
         return null;
+    }
+
+    if (loading) {
+        return (
+            <div className="full-screen-loading">
+                <div className="spinner"></div>
+            </div>
+        );
     }
 
     return (
