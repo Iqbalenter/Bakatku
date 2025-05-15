@@ -1,15 +1,15 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SkillProgress = () => {
+    const [loading, setLoading] = useState(true);
     const location = useLocation();
     const navigate = useNavigate();
     const skillsFromBackend = location.state?.skills || {};
     const skillEntries = Object.entries(skillsFromBackend);
     const skillsName = Object.keys(skillsFromBackend);
 
-    // Redirect logic saat komponen dimount
     useEffect(() => {
         const token = localStorage.getItem("token");
 
@@ -22,9 +22,12 @@ const SkillProgress = () => {
             navigate("/send-cv");
             return;
         }
+
+        setLoading(false);
     }, [navigate, location.state, skillsFromBackend]);
 
     const handleSkillClick = async (skillName) => {
+        setLoading(true);
         try {
             const token = localStorage.getItem("token");
             if (!token) {
@@ -45,13 +48,23 @@ const SkillProgress = () => {
             navigate("/result-analysis2", { state: response.data.data });
         } catch (error) {
             console.error("Error getting skill detail:", error.response?.data || error.message);
-            alert("Gagal mengambil detail skill.");
+            alert("Gagal mengambil detail skill.");  
+        } finally {
+            setLoading(false);
         }
     };
 
     // Jangan render jika data belum siap
     if (!location.state || !skillsFromBackend || Object.keys(skillsFromBackend).length === 0) {
         return null; // atau bisa juga tampilkan loader jika perlu
+    }    
+
+    if (loading) {
+        return (
+            <div className="full-screen-loading">
+                <div className="spinner"></div>
+            </div>
+        );
     }
 
     return (
