@@ -1,10 +1,10 @@
-import BakatKuLogo from '../../../assets/BakatkuLogos.png'
+import BakatKuLogo from '../../../assets/BakatKuLogos.png'
 import { Heading1, Heading4 } from '../../Elements/Heading/Index';
 import Image from '../../Elements/Image/Index';
 import Paragraph from '../../Elements/Paragraph/Index';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router';
 
-const Header = () => {
+const Header = () => { 
   const navigate = useNavigate();
   return ( 
     <div className="home-header">
@@ -20,7 +20,7 @@ const Header = () => {
         </div>
 
         <div className="header-button">
-          <a className='btn' onClick={() => navigate("/send-cv")}>Get Started</a>
+          <a className='btn' onClick={() => navigate('/send-cv')}>Get Started</a>
         </div>
       </header>
     </div>
