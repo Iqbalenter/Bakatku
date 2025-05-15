@@ -6,7 +6,8 @@ import PdfIcon from '../../../assets/pepicons-print_cv.png';
 const SendCv = () => {
     const [file, setFile] = useState(null);
     const [fileName, setFileName] = useState(null);
-    const [loadingIdentity, setLoadingIdentity] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -35,11 +36,13 @@ const SendCv = () => {
                     alert("Please complete the identity data first.");
                     navigate("/fill-identity");
                 } else {
-                    setLoadingIdentity(false);
+                    setLoading(false);
                 }
             } catch (error) {
                 alert("Please complete the identity data first.");
                 navigate("/fill-identity");
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -60,6 +63,8 @@ const SendCv = () => {
         const formData = new FormData();
         formData.append("file", file);
 
+        setIsSubmitting(true);
+
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/send-cv`, formData, {
                 headers: {
@@ -73,13 +78,28 @@ const SendCv = () => {
         } catch (error) {
             console.error("Upload error:", error.response?.data || error.message);
             alert("Failed to upload CV or analyze skills.");
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
-    if (loadingIdentity) return <div>Loading...</div>;
+    if (loading) {
+    return (
+      <div style={{ height: "300px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div className="spinner"></div>
+      </div>
+    );
+    }
 
     return (
         <div>
+            {(loading || isSubmitting) && (
+                <div className="full-screen-loading">
+                    <div className="spinner"></div>
+                </div>
+            )}
+
+            {!loading && !isSubmitting && (
             <div className="upload-container mt-5">
                 <label htmlFor="file-input" className="file-drop-area">
                     <img src={PdfIcon} width={70} className="file-icon" />
@@ -93,8 +113,15 @@ const SendCv = () => {
                     )}
                 </label>
                 <input id="file-input" type="file" accept=".pdf" onChange={handleFileChange} />
-                <button className="submit-btn mt-5" onClick={handleSubmit}>Submit</button>
+                <button className="submit-btn mt-5" onClick={handleSubmit} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <div className="spinner-button" />
+                    ) : (
+                        "Submit"
+                    )}
+                </button>
             </div>
+            )}
         </div>
     );
 };
