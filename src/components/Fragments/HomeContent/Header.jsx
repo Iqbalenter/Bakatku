@@ -2,8 +2,10 @@ import BakatKuLogo from '../../../assets/BakatkuLogos.png'
 import { Heading1, Heading4 } from '../../Elements/Heading/Index';
 import Image from '../../Elements/Image/Index';
 import Paragraph from '../../Elements/Paragraph/Index';
+import { useNavigate } = 'react-router-dom';
 
-const Header = () => { 
+const Header = () => {
+  const navigate = useNavigate();
   return ( 
     <div className="home-header">
       <header className='container-fluid'>
@@ -18,7 +20,7 @@ const Header = () => {
         </div>
 
         <div className="header-button">
-          <a className='btn'>Get Started</a>
+          <a className='btn' onClick={() => navigate("/send-cv")}>Get Started</a>
         </div>
       </header>
     </div>
