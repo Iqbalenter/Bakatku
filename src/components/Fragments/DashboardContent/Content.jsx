@@ -8,11 +8,11 @@ const Content = () => {
     const [progressList, setProgressList] = useState([]);
     const [progressError, setProgressError] = useState("");
     const [skillData, setSkillData] = useState({ skill: '', description: '' });
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const handleSeeFullProgress = async () => {
-        setIsLoading(true);
+        setLoading(true);
         try {
             const token = localStorage.getItem("token");
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/progress/get`, {
@@ -31,12 +31,12 @@ const Content = () => {
                 alert("Failed to retrieve progress data.");
             }
         } finally {
-            setIsLoading(false);
+            setLoading(false);
         }
     };
 
     const handleHistoryClick = async () => {
-        setIsLoading(true);
+        setLoading(true);
         try {
             const token = localStorage.getItem("token");
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/history`, {
@@ -49,7 +49,7 @@ const Content = () => {
             console.error("Failed to retrieve history data:", error);
             alert("Failed to retrieve skill history data.");
         } finally {
-            setIsLoading(false);
+            setLoading(false);
         }
     };
 
@@ -69,6 +69,8 @@ const Content = () => {
                 setSkillData({ skill, description });
             } catch (error) {
                 console.error("Failed to retrieve dashboard data:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -132,10 +134,16 @@ const Content = () => {
         }
     };
 
+    if (loading) {
+        return (
+            <div className="full-screen-loading">
+                <div className="spinner"></div>
+            </div>
+        );
+    }
+
     return (
         <div>
-            {isLoading && <div className="spinner"></div>}
-
             <div className="dashboard-choice">
                 <h1>{skillData.skill?.trim() ? skillData.skill : 'Skill'}</h1>
                 <div className="dashboard-choice-content">
