@@ -1,4 +1,4 @@
-import BakatKuLogo from '../../../assets/BakatKuLogos.png'
+import BakatKuLogo from '../../../assets/BakatkuLogos.png'
 import { Heading1, Heading4 } from '../../Elements/Heading/Index';
 import Image from '../../Elements/Image/Index';
 import Paragraph from '../../Elements/Paragraph/Index';
