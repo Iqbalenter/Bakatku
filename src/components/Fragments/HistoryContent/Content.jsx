@@ -1,9 +1,10 @@
-import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const Content = () => {
+    const [loading, setLoading] = useState(true);
     const [skills, setSkills] = useState([]);
     const navigate = useNavigate();
 
@@ -17,10 +18,12 @@ const Content = () => {
         if (storedHistory) {
             setSkills(JSON.parse(storedHistory));
         }
+        setLoading(false);
     }, []);
 
     const handleSkillClick = async (skill) => {
         try {
+            setLoading(true);
             const token = localStorage.getItem("token");
             const response = await axios.post(
                 `${import.meta.env.VITE_API_URL}/history/detail`,
@@ -34,13 +37,20 @@ const Content = () => {
             navigate("/history-skill-detail");
 
         } catch (error) {
+            setLoading(false);
             console.error("Failed to pick up skill details:", error);
             alert("Failed to pick up skill details.");
         }
     };
 
+
     return (
         <div className="history-content-container">
+            {loading && (
+                <div className="full-screen-loading">
+                    <div className="spinner"></div>
+                </div>
+            )}
             {skills.length === 0 ? (
                 <p>No skill history was found.</p>
             ) : (
